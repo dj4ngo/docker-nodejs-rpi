@@ -6,9 +6,9 @@ MAINTAINER sboyron <sebastien@boyron.eu>
 RUN [ "/cots/mv", "/bin/busybox", "/bin/busybox.arm" ]
 RUN [ "/cots/cp", "/cots/busybox", "/bin/busybox" ]
 
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "update" ]
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "upgrade" ]
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "add", "--update", "nodejs", "nodejs-npm" ]
+RUN [ "/cots/qemu-arm-static", "/sbin/apk", "update" ]
+RUN [ "/cots/qemu-arm-static", "/sbin/apk", "upgrade" ]
+RUN [ "/cots/qemu-arm-static", "/sbin/apk", "add", "--update", "nodejs", "nodejs-npm" ]
 RUN [ "rm", "-rf", "/var/cache.apk/*" ]
 
 # Restore busybox
