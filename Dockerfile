@@ -1,4 +1,4 @@
-FROM dj4ngo/test
+FROM dj4ngo/alpine-rpi
 
 MAINTAINER sboyron <sebastien@boyron.eu>
 
