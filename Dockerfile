@@ -1,16 +1,12 @@
-FROM dj4ngo/alpine-rpi
+FROM dj4ngo/test
 
 MAINTAINER sboyron <sebastien@boyron.eu>
 
-# Use busybox for x86_64
-RUN [ "/cots/mv", "/bin/busybox", "/bin/busybox.arm" ]
-RUN [ "/cots/cp", "/cots/busybox", "/bin/busybox" ]
+RUN cross-build-start \
+  apk -v update \
+  apk -v upgrade \
+  apk -v add --update nodejs nodejs-npm ca-certificates \
+  cross-build-end
 
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "update" ]
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "upgrade" ]
-RUN [ "/cots/qemu-arm-static", "/sbin/apk", "-v", "add", "--update", "nodejs", "nodejs-npm" ]
-RUN [ "rm", "-rf", "/var/cache.apk/*" ]
-
-# Restore busybox
-RUN [ "/cots/mv", "/bin/busybox.arm", "/bin/busybox" ]
+CMD ["sh"]
 
